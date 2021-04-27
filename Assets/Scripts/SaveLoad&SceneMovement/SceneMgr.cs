@@ -25,7 +25,7 @@ public class SceneMgr : MonoBehaviour
     public static int Epi0_FinPage = 1;    //에피소드별 마지막 페이지. 수정되면 바꿔야함.
     public static int Epi1_FinPage = 9;    
     public static int Epi2_FinPage = 16;    
-    public static int Epi3_FinPage = 2;    
+    public static int Epi3_FinPage = 20;    
     public static int Epi4_FinPage = 2;    
 
     //public bool isEpi0Clear = false;
@@ -342,9 +342,64 @@ public class SceneMgr : MonoBehaviour
 
     public void backToActivity()
     {
-        SceneManager.LoadScene("Scene2_12");
+        SceneManager.LoadScene("Scene2_11");
     }
 
+    public void gotoScene3_2()  //에피소드3의 2단원으로 가기.
+    {
+
+        EpiNum = 3;
+        PageNum = 2;
+        SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
+    }
+
+    public void gotoScene3_15()  //에피소드3의 2단원으로 가기.
+    {
+
+        EpiNum = 3;
+        PageNum = 15;
+        SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
+    }
+
+    public void gotoScene3_20()  //에피소드3의 2단원으로 가기.
+    {
+
+        EpiNum = 3;
+        PageNum = 20;
+        SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
+    }
+
+    public void gotoScene_doMosaic()
+    {
+        SceneManager.LoadScene("Scene3_PicMosaic_doMosaic");
+    }
+    public void gotoScene_mosaic_O()
+    {
+        SceneManager.LoadScene("Scene3_Mosaic_O");
+    }
+
+    public void gotoScene_mosaic_X()
+    {
+        SceneManager.LoadScene("Scene3_Mosaic_X");
+    }
+
+    
+
+    public void gotoScene3_17()  
+    {
+
+        EpiNum = 3;
+        PageNum = 17;
+        SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
+    }
+
+    public void gotoScene3_18()  
+    {
+
+        EpiNum = 3;
+        PageNum = 18;
+        SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
+    }
 
     public void ExitProgram()
     {
