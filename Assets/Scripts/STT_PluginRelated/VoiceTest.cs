@@ -41,10 +41,9 @@ public class VoiceTest : MonoBehaviour
 
     void OnVoiceResult(string text)
     {
-        nowSpeaking.text = text;     //사용자가 말한 텍스트
-        hint.gameObject.SetActive(false);
-        //setGuidTxt1(text);     //정답
-        isAnswer(text);
+        nowSpeaking.text = text;     //사용자가 말한 내용을 화면에 띄움
+        hint.gameObject.SetActive(false);   //힌트 메세지는 사라지게함.
+        isAnswer(text);     //정답인지 아닌지 판별.
 
     }
 
@@ -55,58 +54,5 @@ public class VoiceTest : MonoBehaviour
         }
     }
 
-    //void setGuidTxt1(string text)
-    //{
-    //    if (text == GuidTxt_1[i])   //바르게 말했을때
-    //    {
-    //        if (i == GuidTxt_1.Count - 1)
-    //        {
-    //            //setGuidTxt2(text);
-    //            audioScource.PlayOneShot(clips[1]);
-    //        }
-    //        else
-    //        {
-    //            i++;
-    //            StartCoroutine(WaitForIt(GuidTxt_1[i]));    //1초동안 바르게 말한거 보여주고
-    //        }
-            
-    //    }
-    //}
-
-    //void setGuidTxt2(string text)
-    //{
-    //    if (text == GuidTxt_2[i])
-    //    {
-    //        if (i == GuidTxt_2.Count)
-    //        {
-    //            setGuidTxt3(text);
-    //        }
-    //        i++;
-    //        guidText.text = GuidTxt_2[i];
-    //    }
-    //}
-
-    //void setGuidTxt3(string text)
-    //{
-    //    if (text == GuidTxt_3[i])
-    //    {
-    //        if (i == GuidTxt_3.Count)
-    //        {
-
-    //        }
-    //        else
-    //        {
-    //            i++;
-    //            guidText.text = GuidTxt_3[i];
-    //        }
-
-    //    }
-    //}
-
-    //IEnumerator WaitForIt(string txt)
-    //{
-    //    yield return new WaitForSeconds(1.7f);
-    //    guidText.text = txt;
-    //    nowSpeaking.text = "";
-    //}
+    
 }

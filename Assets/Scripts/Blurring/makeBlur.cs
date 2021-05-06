@@ -20,10 +20,10 @@ public class makeBlur : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
        
 
     }
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData)  //드래그 이벤트 발생 시
     {
         Vector3 currentPos = Input.mousePosition;
-        Instantiate(effect, currentPos, Quaternion.identity);
+        Instantiate(effect, currentPos, Quaternion.identity);   //현재 마우스 포지션에 프리팹 생성
 
     }
 }

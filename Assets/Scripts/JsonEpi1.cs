@@ -5,6 +5,10 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//칠판교육 씬에서 교육 내용이 많아지면 사용할지도 모르는 코드
+//현재는 사용하지 않음.
+
 public class JsonEpi1 : MonoBehaviour
 {
     int speechNum = 0;

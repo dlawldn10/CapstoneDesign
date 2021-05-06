@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+//원래는 구글STT를 바로 유니티에서 사용하려고 했으나 안드로이드에서 빌드하면 streraming asset에 바로 접근이 불가해서 key를 얻을 수 없었음 -> STT실행 불가.
+//그래서 바로 사용하는 방법 대신 플러그인으로 연결하여 안드로이드 기능을 사용함.
 
 public class VoiceController : MonoBehaviour {
 
