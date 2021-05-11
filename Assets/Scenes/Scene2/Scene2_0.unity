@@ -553,8 +553,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1327731095}
-        m_MethodName: onClickClosedEpi
+      - m_Target: {fileID: 717131775}
+        m_MethodName: gotoScene4_1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1492,8 +1492,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1327731095}
-        m_MethodName: onClickClosedEpi
+      - m_Target: {fileID: 717131775}
+        m_MethodName: gotoScene3_1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3738,7 +3738,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 717131775}
-        m_MethodName: gotoScene1_1
+        m_MethodName: gotoScene1_0
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6050,7 +6050,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 717131775}
-        m_MethodName: gotoNextPage
+        m_MethodName: gotoScene2_1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
