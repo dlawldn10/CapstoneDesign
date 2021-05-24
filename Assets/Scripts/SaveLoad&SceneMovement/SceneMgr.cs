@@ -8,79 +8,107 @@ using UnityEngine.SceneManagement;
 //모든 씬에 들어감
 public class SceneMgr : MonoBehaviour
 {
+   
+
     SaveLoad saveLoad;
-    //PlaySounds sound;
 
-    public static int Epi0_ClearPageNum = 0;  //사용자의 최대 진도 페이지
-    public static int Epi1_ClearPageNum = 0;  //사용자의 최대 진도 페이지
-    public static int Epi2_ClearPageNum = 0;  //사용자의 최대 진도 페이지
-    public static int Epi3_ClearPageNum = 0;  //사용자의 최대 진도 페이지
-    public static int Epi4_ClearPageNum = 0;  //사용자의 최대 진도 페이지
-
-    public static int OpenEpiNum = 0;   //열린 에피소드 상황.
+    public static int ClearEpiNum = 0;   //열린 에피소드 상황.
+    public static int ClearPageNum = 0;  //사용자의 최대 진도 페이지 
 
     public static int PageNum = 0;  //사용자가 현재 있는 페이지
     public static int EpiNum = 0;   //사용자가 현재 있는 에피소드
 
-    public static int Epi0_FinPage = 1;    //에피소드별 마지막 페이지. 수정되면 바꿔야함.
-    public static int Epi1_FinPage = 9;    
-    public static int Epi2_FinPage = 16;    
-    public static int Epi3_FinPage = 20;    
-    public static int Epi4_FinPage = 31;    
 
-    //public bool isEpi0Clear = false;
-    //public bool isEpi1Clear = false;
-    //public bool isEpi2Clear = false;
-    //public bool isEpi3Clear = false;
-    //public bool isEpi4Clear = false;
+    public static int Epi1_Sub1 = 0;  //에피소드1의 1단원 페이지
+    public static int Epi1_Sub2 = 5;  //에피소드1의 2단원 페이지
+    public static int Epi1_Sub3 = 8;  //에피소드1의 3단원 페이지
+
+    public static int Epi2_Sub1 = 1;  //에피소드2의 1단원 페이지
+    public static int Epi2_Sub2 = 4;  //에피소드2의 2단원 페이지
+    public static int Epi2_Sub3 = 14;  //에피소드2의 3단원 페이지
+
+    public static int Epi3_Sub1 = 1;  //에피소드3의 1단원 페이지
+    public static int Epi3_Sub2 = 14;  //에피소드3의 2단원 페이지
+    public static int Epi3_Sub3 = 18;  //에피소드3의 3단원 페이지
+
+    public static int Epi4_Sub1 = 1;  //에피소드4의 1단원 페이지
+    public static int Epi4_Sub2 = 5;  //에피소드4의 2단원 페이지
+    public static int Epi4_Sub3 = 20;  //에피소드4의 3단원 페이지
+    public static int Epi4_Sub4 = 36;  //에피소드4의 4단원 페이지
+
+
+    //필요 없을듯
+    //public static int Epi0_ClearPageNum = 0;  //사용자의 최대 진도 페이지
+    //public static int Epi1_ClearPageNum = 0;  //사용자의 최대 진도 페이지
+    //public static int Epi2_ClearPageNum = 0;  //사용자의 최대 진도 페이지
+    //public static int Epi3_ClearPageNum = 0;  //사용자의 최대 진도 페이지
+    //public static int Epi4_ClearPageNum = 0;  //사용자의 최대 진도 페이지
+
+
+
+
+
+
+
+    public static int Epi0_FinPage = 1;    //에피소드별 마지막 페이지. 수정되면 바꿔야함.
+    public static int Epi1_FinPage = 9;
+    public static int Epi2_FinPage = 16;
+    public static int Epi3_FinPage = 20;
+    public static int Epi4_FinPage = 39;
+
+   
 
 
     private void Start()
     {
         saveLoad = GameObject.Find("SceneMgr").GetComponent<SaveLoad>();
-        //sound = GameObject.Find("Button_Next").GetComponent<PlaySounds>();
-        //PageNum = SceneManager.GetActiveScene().buildIndex;
-        //Debug.Log(EpiNum + "," + PageNum);
+        
     }
 
-    private void Update()
+    public void renewProgress()
     {
-        SaveClearPage();
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (PageNum >= ClearPageNum)     //현재 페이지가 기록된 최대 진도보다 크면
         {
-            Time.timeScale = 0f;
-            Application.Quit();
-            saveLoad.Save();
+            ClearPageNum = PageNum;     //최대 진도 갱신
         }
 
+        if (EpiNum >= ClearEpiNum)     //현재 에피소드가 기록된 최대 진도보다 크면
+        {
+            ClearEpiNum = EpiNum;     //최대 진도 갱신
+        }
+
+        Debug.Log(ClearPageNum + " "  + EpiNum);
     }
 
+    
     //클리어한 최대 페이지(학습진도)를 기록함.
     void SaveClearPage()
     {
-       if(Epi0_ClearPageNum < PageNum && EpiNum == 0)
-        {
-            Epi0_ClearPageNum = PageNum;
-        }
-       else if(Epi1_ClearPageNum < PageNum && EpiNum == 1)
-        {
-            Epi1_ClearPageNum = PageNum;
-        }
-       else if(Epi2_ClearPageNum < PageNum && EpiNum == 2)
-        {
-            Epi2_ClearPageNum = PageNum;
-        }
-       else if(Epi3_ClearPageNum < PageNum && EpiNum == 3)
-        {
-            Epi3_ClearPageNum = PageNum;
-        }
-       else if(Epi4_ClearPageNum < PageNum && EpiNum == 4)
-        {
-            Epi4_ClearPageNum = PageNum;
-        }
+       //if(Epi0_ClearPageNum < PageNum && EpiNum == 0)
+       // {
+       //     Epi0_ClearPageNum = PageNum;
+       // }
+       //else if(Epi1_ClearPageNum < PageNum && EpiNum == 1)
+       // {
+       //     Epi1_ClearPageNum = PageNum;
+       // }
+       //else if(Epi2_ClearPageNum < PageNum && EpiNum == 2)
+       // {
+       //     Epi2_ClearPageNum = PageNum;
+       // }
+       //else if(Epi3_ClearPageNum < PageNum && EpiNum == 3)
+       // {
+       //     Epi3_ClearPageNum = PageNum;
+       // }
+       //else if(Epi4_ClearPageNum < PageNum && EpiNum == 4)
+       // {
+       //     Epi4_ClearPageNum = PageNum;
+       // }
         //Debug.Log("Epi0 : " + Epi0_ClearPageNum);
         //Debug.Log("Epi1 : " + Epi1_ClearPageNum);
         //Debug.Log("Epi2 : " + Epi2_ClearPageNum);
+
+
 
     }
 
@@ -91,28 +119,32 @@ public class SceneMgr : MonoBehaviour
         {
             PageNum = 0;    //페이지 넘버를 0으로 되돌리고
             ++EpiNum;   //에피소드 넘버가 1늘어난다.
-            OpenEpiNum = 1;
+            ClearPageNum = 0;
+            ClearEpiNum = 1;
             return PageNum;
         }
         else if (EpiNum == 1 && ++PageNum > Epi1_FinPage)     //현재 에피소드가 1이고 에피소드2의 마지막 페이지에 도달했을 때
         {
             PageNum = 0;    //페이지 넘버를 0으로 되돌리고
             ++EpiNum;   //에피소드 넘버가 1늘어난다.
-            OpenEpiNum = 2;
+            ClearPageNum = 0;
+            ClearEpiNum = 2;
             return PageNum;
         }
         else if (EpiNum == 2 && ++PageNum > Epi2_FinPage)     //현재 에피소드가 2이고 에피소드2의 마지막 페이지에 도달했을 때
         {
             PageNum = 0;    //페이지 넘버를 0으로 되돌리고
             ++EpiNum;   //에피소드 넘버가 1늘어난다.
-            OpenEpiNum = 3;
+            ClearPageNum = 0;
+            ClearEpiNum = 3;
             return PageNum;
         }
         else if (EpiNum == 3 && ++PageNum / Epi3_FinPage >= 1)     //현재 에피소드가 3이고 에피소드3의 마지막 페이지에 도달했을 때
         {
             PageNum = 0;    //페이지 넘버를 0으로 되돌리고
             ++EpiNum;   //에피소드 넘버가 1늘어난다.
-            OpenEpiNum = 4;
+            ClearPageNum = 0;
+            ClearEpiNum = 4;
             return PageNum;
         }
         else if (EpiNum == 4 && ++PageNum / Epi4_FinPage >= 1)     //현재 에피소드가 4이고 에피소드4의 마지막 페이지에 도달했을 때
@@ -167,15 +199,15 @@ public class SceneMgr : MonoBehaviour
     //버튼에 적용될 함수
     public void gotoNextPage()
     {
-        //sound.SceneChangeSound();
+        
         int nextPage = FindNextPage();      //밑줄에 바로넣으면 EpiNum 연산이랑 순서 꼬여서 연산오류 발생. 변수 만들어서 먼저계산.
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + nextPage.ToString());
-        //Debug.Log(EpiNum + "," + PageNum);
     }
     public void gotoBackPage()
     {
-        //sound.SceneChangeSound();
         int backPage = FindBackPage();
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + backPage.ToString());
     }
 
@@ -189,84 +221,84 @@ public class SceneMgr : MonoBehaviour
     //에피소드 선택 했을때
     public void gotoScene1_0()  //에피소드1의 1단원으로 가기.
     {
-
         EpiNum = 1;
         PageNum = 0;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene1_1()  //에피소드1의 1단원으로 가기.
     {
-
         EpiNum = 1;
         PageNum = 1;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
-    //없애도 되는 부분인듯 함. 이상 없으면 없애기
-    //public void gotoScene1_3()  //에피소드1의 2단원으로 가기.
-    //{
+    public void gotoScene1_3()  //감정카드 고르기 활동 초기화
+    {
+        EpiNum = 1;
+        PageNum = 3;
+        renewProgress();
+        SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
+    }
 
-    //    EpiNum = 1;
-    //    PageNum = 3;
-    //    SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
-    //}
-    
+
     public void gotoScene1_6()  //에피소드1의 2단원으로 가기.
     {
-
         EpiNum = 1;
         PageNum = 6;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene1_9()  //에피소드1의 3단원으로 가기.
     {
-
         EpiNum = 1;
-        PageNum = 9;
+        PageNum = 9; 
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     //에피소드선택 했을때
     public void gotoScene2_1()  //에피소드2의 1단원으로 가기.
     {
-
         EpiNum = 2;
         PageNum = 1;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene2_2()  //에피소드2의 1단원 활동으로 가기.
     {
-
         EpiNum = 2;
         PageNum = 2;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     //하늘이 이야기에서 돌아올때 필요
     public void gotoScene2_3()  //에피소드1의 2단원으로 가기.
     {
-
         EpiNum = 2;
         PageNum = 3;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene2_5()  //에피소드2의 2단원으로 가기.
     {
-
         EpiNum = 2;
         PageNum = 5;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene2_15()  //에피소드2의 3단원으로 가기.
     {
-
         EpiNum = 2;
         PageNum = 15;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
@@ -337,7 +369,7 @@ public class SceneMgr : MonoBehaviour
     }
     public void gotoScene_StoryTelling_4()
     {
-        SceneManager.LoadScene("Scene_StoryTelling_4");
+       SceneManager.LoadScene("Scene_StoryTelling_4");
     }
     public void gotoScene_StoryTelling_5()
     {
@@ -369,39 +401,39 @@ public class SceneMgr : MonoBehaviour
     //에피소드 선택 버튼 눌렀을때
     public void gotoScene3_1()  //에피소드3의 1단원으로 가기.
     {
-
         EpiNum = 3;
         PageNum = 1;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene3_2()  //에피소드3의 1단원 활동으로 가기.
     {
-
         EpiNum = 3;
         PageNum = 2;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene3_15()  //에피소드3의 2단원으로 가기.
     {
-
         EpiNum = 3;
         PageNum = 15;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
-    public void gotoScene3_20()  //에피소드3의 3단원으로 가기.
+    public void gotoScene3_19()  //에피소드3의 3단원으로 가기.
     {
-
         EpiNum = 3;
-        PageNum = 20;
+        PageNum = 19;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene_doMosaic()
     {
-        SceneManager.LoadScene("Scene3_PicMosaic_doMosaic");
+       SceneManager.LoadScene("Scene3_PicMosaic_doMosaic");
     }
     public void gotoScene_mosaic_O()    //답이 맞았을때 화면으로
     {
@@ -417,51 +449,59 @@ public class SceneMgr : MonoBehaviour
 
     public void gotoScene3_17()     //사진 올릴지 말지 선택 화면으로
     {
-
         EpiNum = 3;
         PageNum = 17;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene3_18()  //선택지 활동 끝나고 다음 화면으로
     {
-
         EpiNum = 3;
         PageNum = 18;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     //에피소드 선택 버튼 눌렀을때
     public void gotoScene4_1()  //에피소드4의 1단원으로 이동하기.
     {
-
         EpiNum = 4;
         PageNum = 1;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
 
     public void gotoScene4_2()  //에피소드4의 1단원 활동으로 이동하기.
     {
-
         EpiNum = 4;
         PageNum = 2;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene4_6()  //에피소드4의 2단원으로 이동하기.
     {
-
         EpiNum = 4;
         PageNum = 6;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 
     public void gotoScene4_21()  //에피소드4의 3단원으로 이동하기.
     {
-
         EpiNum = 4;
         PageNum = 21;
+        renewProgress();
+        SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
+    }
+
+    public void gotoScene4_37()  //에피소드4의 4단원으로 이동하기.
+    {
+        EpiNum = 4;
+        PageNum = 37;
+        renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }
 

@@ -10,16 +10,17 @@ public class SelectedCardNum : MonoBehaviour
     public static int selected_card_num = 0;
     public static bool finishedSelecting = false;
     public GameObject NextBttn;
+    public GameObject BackBttn;
     public GameObject NextBttn2;
     public GameObject speechBubble;
     public GameObject speechBubble2;
     public GameObject Panel;
 
-    GameObject CanvasScene1_2;
+    GameObject CanvasScene1_3;
 
     private void Start()
     {
-        CanvasScene1_2 = GameObject.Find("Canvas");
+        CanvasScene1_3 = GameObject.Find("Canvas");
         SelectCard.SceneChanged = false;
         selected_card_num = 0;
     }
@@ -45,8 +46,9 @@ public class SelectedCardNum : MonoBehaviour
         speechBubble2.SetActive(true);
         NextBttn.SetActive(false);
         NextBttn2.SetActive(true);
+        BackBttn.SetActive(false);
         Panel.SetActive(true);
-        DontDestroyOnLoad(CanvasScene1_2);
+        DontDestroyOnLoad(CanvasScene1_3);
     }
 
     public void Scene1_4_NextBttn()

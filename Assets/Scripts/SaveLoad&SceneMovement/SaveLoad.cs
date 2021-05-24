@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SaveLoad : MonoBehaviour
 {
     public GameObject ExitPanel;
-    
+    GameObject prefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,8 @@ public class SaveLoad : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0f;
-            ExitPanel.SetActive(true);
+            prefab = Instantiate(ExitPanel, GameObject.Find("Canvas").transform); // 부모 지정
+            //ExitPanel.SetActive(true);
         }
     }
 
@@ -28,15 +30,20 @@ public class SaveLoad : MonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetInt("PageNum", SceneMgr.PageNum);
-        PlayerPrefs.SetInt("EpiNum", SceneMgr.EpiNum);
 
-        PlayerPrefs.SetInt("Epi0_ClearPageNum", SceneMgr.Epi0_ClearPageNum);
-        PlayerPrefs.SetInt("Epi1_ClearPageNum", SceneMgr.Epi1_ClearPageNum);
-        PlayerPrefs.SetInt("Epi2_ClearPageNum", SceneMgr.Epi2_ClearPageNum);
-        PlayerPrefs.SetInt("Epi3_ClearPageNum", SceneMgr.Epi3_ClearPageNum);
-        PlayerPrefs.SetInt("Epi4_ClearPageNum", SceneMgr.Epi4_ClearPageNum);
-        PlayerPrefs.SetInt("OpenEpiNum", SceneMgr.OpenEpiNum);
+
+        PlayerPrefs.SetInt("ClearPageNum", SceneMgr.ClearPageNum);    //최대 진도 페이지
+        PlayerPrefs.SetInt("ClearEpiNum", SceneMgr.ClearEpiNum);   //최대 진도 에피소드
+
+        PlayerPrefs.SetInt("PageNum", SceneMgr.PageNum);    //가장 최근에 머무르던 페이지
+        PlayerPrefs.SetInt("EpiNum", SceneMgr.EpiNum);      //가장 최근에 머무르던 에피소드
+
+        //PlayerPrefs.SetInt("Epi0_ClearPageNum", SceneMgr.Epi0_ClearPageNum);
+        //PlayerPrefs.SetInt("Epi1_ClearPageNum", SceneMgr.Epi1_ClearPageNum);
+        //PlayerPrefs.SetInt("Epi2_ClearPageNum", SceneMgr.Epi2_ClearPageNum);
+        //PlayerPrefs.SetInt("Epi3_ClearPageNum", SceneMgr.Epi3_ClearPageNum);
+        //PlayerPrefs.SetInt("Epi4_ClearPageNum", SceneMgr.Epi4_ClearPageNum);
+
     }
 
     public void Load()
@@ -45,20 +52,11 @@ public class SaveLoad : MonoBehaviour
         {
             SceneMgr.PageNum = PlayerPrefs.GetInt("PageNum");
             SceneMgr.EpiNum = PlayerPrefs.GetInt("EpiNum");
-            SceneMgr.OpenEpiNum = PlayerPrefs.GetInt("OpenEpiNum");
+            SceneMgr.ClearEpiNum = PlayerPrefs.GetInt("ClearEpiNum");
+            SceneMgr.ClearPageNum = PlayerPrefs.GetInt("ClearPageNum");
         }
 
-        //if (PlayerPrefs.HasKey("OpenEpiNum"))
-        //{
-        //    SceneMgr.OpenEpiNum = PlayerPrefs.GetInt("OpenEpiNum");
-        //    SceneMgr.Epi0_ClearPageNum = PlayerPrefs.GetInt("Epi0_ClearPageNum");
-        //    SceneMgr.Epi1_ClearPageNum = PlayerPrefs.GetInt("Epi1_ClearPageNum");
-        //    SceneMgr.Epi2_ClearPageNum = PlayerPrefs.GetInt("Epi2_ClearPageNum");
-        //    SceneMgr.Epi3_ClearPageNum = PlayerPrefs.GetInt("Epi3_ClearPageNum");
-        //    SceneMgr.Epi4_ClearPageNum = PlayerPrefs.GetInt("Epi4_ClearPageNum");
-
-
-        //}
+        
     }
 
     public void ExitYes()
@@ -66,12 +64,7 @@ public class SaveLoad : MonoBehaviour
         Save();
         Application.Quit();   // 앱을 종료
     }
-    public void ExitNo()
-    {
-        Time.timeScale = 1f; // 먼저 시간을 다시 가도록 원복 
-        ExitPanel.SetActive(false); // Exit 팝업창을 지운다.
-    }
+    
 
-    //출처: https://soo0100.tistory.com/779 [Thank you for everything in the world]
 
 }

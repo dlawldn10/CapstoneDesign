@@ -11,23 +11,22 @@ using UnityEngine.UI;
 public class ScreenCaptureManager : MonoBehaviour
 {
     bool onCapture = false;
-    public Animator anim;
+    public ToastMssg toast;
     
 
     private void Start()
     {
-        anim = GameObject.Find("Captured").GetComponent<Animator>();
+        toast = GameObject.Find("Toast").GetComponent<ToastMssg>();
+
     }
 
     public void PressBtnCapture()
     {
         if (onCapture == false)
         {
-            anim.SetBool("Capture", true);
             StartCoroutine("CRSaveScreenshot");
             
         }
-        //anim.SetBool("Capture", false);
     }
 
     //스크린샷 찍는 함수
@@ -46,12 +45,7 @@ public class ScreenCaptureManager : MonoBehaviour
 
             if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) == false)   //사용자가 첫번째 물어봤을때 거절하면
             {
-                //다이얼로그를 위해 별도의 플러그인을 사용했었다. 이 코드는 주석 처리함.
-                //AGAlertDialog.ShowMessageDialog("권한 필요", "스크린샷을 저장하기 위해 저장소 권한이 필요합니다.",
-                //"Ok", () => OpenAppSetting(),
-                //"No!", () => AGUIMisc.ShowToast("저장소 요청 거절됨"));
-
-                // 별도로 확인 팝업을 띄우지 않을꺼면 OpenAppSetting()을 바로 호출함.
+                
                 OpenAppSetting();
 
                 onCapture = false;
@@ -59,9 +53,9 @@ public class ScreenCaptureManager : MonoBehaviour
             }
         }
         string persistentDataPath = Application.persistentDataPath;
-        string fileLocation = persistentDataPath.Substring(0, persistentDataPath.IndexOf("Android")) + "/DCIM/CapstoneDesign/";     //사진 저장할 경로 지정
+        string fileLocation = persistentDataPath.Substring(0, persistentDataPath.IndexOf("Android")) + "/DCIM/EduToGender";     //사진 저장할 경로 지정
         //persistentDataPath.Substring(0, persistentDataPath.IndexOf("Android")) + "/DCIM/";
-        //"mnt/sdcard/DCIM/Screenshots/" -> 이걸로 하다가 갑자기 안되서 위에걸로 바꿈...
+        //"mnt/sdcard/DCIM/Screenshots/" -> 이걸로 하다가 갑자기 안돼서 위에걸로 바꿈...
         string filename = Application.productName + "_" + System.DateTime.Now.ToString("yyyyMMddHHmmss") + ".png";
         string finalLOC = fileLocation + filename;
         if (!Directory.Exists(fileLocation))    //저장경로에 해당 파일 없으면 파일 만들기.
@@ -88,9 +82,10 @@ public class ScreenCaptureManager : MonoBehaviour
         AndroidJavaObject objIntent = new AndroidJavaObject("android.content.Intent", new object[2] { "android.intent.action.MEDIA_SCANNER_SCAN_FILE", classUri.CallStatic<AndroidJavaObject>("parse", "file://" + finalLOC) });
         objActivity.Call("sendBroadcast", objIntent);
 
-        //아래 한 줄 또한 별도의 안드로이드 플러그인. 별도로 만들어서 호출하는 함수를 넣어주면 된다.
-        //AGUIMisc.ShowToast(finalLOC + "로 저장했습니다.");
-        anim.SetBool("Capture", false);
+
+        //토스트 메세지 띄우기
+        toast._ShowAndroidToastMessage("캡쳐되었습니다");
+        toast._ShowAndroidToastMessage(finalLOC + "에 저장되었습니다");
         onCapture = false;
     }
 
@@ -122,4 +117,6 @@ public class ScreenCaptureManager : MonoBehaviour
             Debug.LogException(ex);
         }
     }
+
+    
 }
