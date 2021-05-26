@@ -9,6 +9,7 @@ public class PaintInstantiate : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     int colorSize = 0;
    
     GameObject Color;
+    GameObject emptyObj;
     public GameObject[] RedGroup = new GameObject[3];
     public GameObject[] OrangeGroup = new GameObject[3];
     public GameObject[] YellowGroup = new GameObject[3];
@@ -20,7 +21,22 @@ public class PaintInstantiate : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     public GameObject[] BrownGroup = new GameObject[3];
     public GameObject[] BlackGroup = new GameObject[3];
     public GameObject[] WhiteGroup = new GameObject[3];
-    
+
+    public static List<List<GameObject>> paintObjects = new List<List<GameObject>>();
+    public static List<GameObject> workList = new List<GameObject>();
+    public static Stack<GameObject> st;
+    public static int indx = 0;
+
+    private void Start()
+    {
+        emptyObj = new GameObject();
+        GameObject paper = GameObject.Find("Paper");
+        emptyObj.transform.SetParent(paper.GetComponent<Transform>());  //Paper 아래에 emptyobj 생성하도록 설정
+        workList.Add(emptyObj);
+        //Instantiate(emptyObj, paper.transform.position, Quaternion.identity);
+        
+    }
+
 
     public void setColor()
     {
@@ -70,10 +86,16 @@ public class PaintInstantiate : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         {
             setColor();
             Vector2 currentPos = Input.mousePosition;
-            Instantiate(Color, currentPos, Quaternion.identity);
-            Debug.Log(colorName + " 드래그중");
+            GameObject tmp = Instantiate(Color, currentPos, Quaternion.identity);
+            tmp.transform.SetParent(emptyObj.GetComponent<Transform>());  //emptyobj 아래에 물감 생성하도록 설정
+            
+
+
+            //paintObjects.Add(new List<GameObject>());
+            
+            //paintObjects[indx].Add(Instantiate(Color, currentPos, Quaternion.identity));
         }
-        
+
 
     }
 
@@ -84,7 +106,12 @@ public class PaintInstantiate : MonoBehaviour, IBeginDragHandler, IEndDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
-
+        if (PosterBttns.isPaintMode)
+        {
+            //indx++;
+            emptyObj = new GameObject();
+            emptyObj.transform.SetParent(GameObject.Find("Paper").GetComponent<Transform>());  //Paper 아래에 emptyobj 생성하도록 설정
+            workList.Add(emptyObj);
+        }
     }
 }

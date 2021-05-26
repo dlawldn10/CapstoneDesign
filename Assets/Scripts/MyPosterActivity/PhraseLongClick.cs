@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PhraseLongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class PhraseLongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     private bool isBtnDown = false;
     private float clickTime = 0;    //클릭중인 시간
 
     GameObject phraseSV;
 
+    bool longClicked = false;
+
 
     private void Start()
     {
-        phraseSV = GameObject.Find("PhraseScrollView");
+        phraseSV = GameObject.Find("PhraseScrollView(Clone)");
     }
 
 
@@ -21,23 +23,19 @@ public class PhraseLongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (isBtnDown)
         {
-            Debug.Log("BTN DOWN");
             clickTime += Time.deltaTime;
             if(clickTime > 1)
             {
-                
-
                 //창닫기
-                if (phraseSV.activeSelf)
+                if (phraseSV.activeInHierarchy)
                 {
                     //선택
-                    this.gameObject.transform.parent = GameObject.Find("Canvas").transform;
-                    phraseSV.SetActive(false);
+                    this.gameObject.transform.SetParent(GameObject.Find("Canvas").transform);
+                    Destroy(phraseSV);
                 }
 
-                //드래그
-                Vector2 currentPos = Input.mousePosition;
-                this.transform.position = currentPos;
+                longClicked = true;
+                
             }
         }
     }
@@ -50,6 +48,18 @@ public class PhraseLongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public void OnPointerUp(PointerEventData eventData)
     {
         isBtnDown = false;
-        clickTime = 0;
+        this.clickTime = 0;
+        longClicked = false;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (longClicked == true)
+        {
+            //드래그
+            Vector2 currentPos = Input.mousePosition;
+            this.transform.position = currentPos;
+        }
+        
     }
 }

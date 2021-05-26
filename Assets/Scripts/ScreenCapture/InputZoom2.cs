@@ -19,7 +19,7 @@ public class InputZoom2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        firstPos = zoomCamera.transform.position;
+        firstPos = this.gameObject.transform.position;
         TouchScreenKeyboard.hideInput = false;
         //inputField_Line1 = GameObject.Find("InputField_Line1").GetComponent<InputField>();
         //inputField_Line3 = GameObject.Find("InputField_Line2").GetComponent<InputField>();

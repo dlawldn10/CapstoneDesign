@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 public class SceneMgr : MonoBehaviour
 {
    
-
     SaveLoad saveLoad;
+    public GameObject menu;
 
     public static int ClearEpiNum = 0;   //열린 에피소드 상황.
     public static int ClearPageNum = 0;  //사용자의 최대 진도 페이지 
@@ -56,13 +56,28 @@ public class SceneMgr : MonoBehaviour
     public static int Epi3_FinPage = 20;
     public static int Epi4_FinPage = 39;
 
-   
 
+    
 
     private void Start()
     {
         saveLoad = GameObject.Find("SceneMgr").GetComponent<SaveLoad>();
-        
+        menu = GameObject.Find("Menu1").gameObject;
+
+    }
+
+    public void Menuclick()
+    {
+        if (menu.activeSelf)
+        {
+            menu.SetActive(false);
+        }
+        else
+        {
+
+            menu.SetActive(true);
+        }
+
     }
 
     public void renewProgress()
@@ -149,7 +164,7 @@ public class SceneMgr : MonoBehaviour
         }
         else if (EpiNum == 4 && ++PageNum / Epi4_FinPage >= 1)     //현재 에피소드가 4이고 에피소드4의 마지막 페이지에 도달했을 때
         {
-            PageNum = 0;    //페이지 넘버를 0으로 되돌리고..
+            //PageNum = 0;    //페이지 넘버를 0으로 되돌리고..
         }
         
         return PageNum;
@@ -493,6 +508,15 @@ public class SceneMgr : MonoBehaviour
     {
         EpiNum = 4;
         PageNum = 21;
+        renewProgress();
+        SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
+    }
+
+    //임시
+    public void gotoScene4_36()  //에피소드4의 4단원으로 이동하기.
+    {
+        EpiNum = 4;
+        PageNum = 36;
         renewProgress();
         SceneManager.LoadScene("Scene" + EpiNum.ToString() + "_" + PageNum.ToString());
     }

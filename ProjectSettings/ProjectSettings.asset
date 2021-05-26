@@ -32,7 +32,7 @@ PlayerSettings:
     x: 0
     y: 0
     width: 1
-    height: 1
+    height: 1.0000001
   m_SplashScreenBackgroundPortraitUvs:
     serializedVersion: 2
     x: 0
@@ -42,8 +42,8 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 0}
-    duration: 2
+  - logo: {fileID: 21300000, guid: c6eb0edf8259619428366df76e4b815d, type: 3}
+    duration: 3
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -676,9 +676,10 @@ PlayerSettings:
   ps5OperatingSystemCanDisableSplashScreen: 0
   ps5IncludedModules: []
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: 0}
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 24b03771e172dfa45bd83ac597765f34,
+    type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
-  blurSplashScreenBackground: 1
+  blurSplashScreenBackground: 0
   spritePackerPolicy: 
   webGLMemorySize: 16
   webGLExceptionSupport: 1

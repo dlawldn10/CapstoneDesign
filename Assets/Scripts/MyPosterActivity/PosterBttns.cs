@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PosterBttns : MonoBehaviour
@@ -7,6 +9,7 @@ public class PosterBttns : MonoBehaviour
     public GameObject Palette;
     public GameObject StickerSV;
     public GameObject PhraseSV;
+    public GameObject SVposition;
 
     public GameObject RedGroup;
     public GameObject OrangedGroup;
@@ -20,9 +23,13 @@ public class PosterBttns : MonoBehaviour
     public GameObject BlackGroup;
     public GameObject WhiteGroup;
 
+    GameObject tmp;
+    GameObject tmp2;
+
     public static string nowColor = "";
     public static int nowColorSize = 0;
     public static bool isPaintMode = false;
+
 
     private void Start()
     {
@@ -31,33 +38,60 @@ public class PosterBttns : MonoBehaviour
     public void PhraseBttn()
     {
         turnOffOthers();
-        PhraseSV.SetActive(true);
+        tmp = Instantiate(PhraseSV, SVposition.transform.position, Quaternion.identity);
+        tmp.transform.SetParent(GameObject.Find("Canvas").transform);
+        
+
     }
 
     public void StickerBttn()
     {
         turnOffOthers();
-        StickerSV.SetActive(true);
+        tmp2 = Instantiate(StickerSV, SVposition.transform.position, Quaternion.identity);
+        tmp2.transform.SetParent(GameObject.Find("Canvas").transform);
+        
     }
 
     public void PaintBttn()
     {
-        turnOffOthers();
-        isPaintMode = true;
-        Palette.SetActive(true);
+        
+        if (Palette.activeSelf)
+        {
+            Palette.SetActive(false);
+            isPaintMode = false;
+        }
+        else
+        {
+            turnOffOthers();        //다른 툴 누른 상태에서 누르는 경우 + 아무것도 안하고 닫는 경우
+            Palette.SetActive(true);
+            isPaintMode = true;
+        }
+        
+        
     }
 
     public void BackBttn()
     {
+        if(PaintInstantiate.workList.Count - 2 < 0)
+        {
 
+        }
+        else
+        {
+            Destroy(PaintInstantiate.workList[PaintInstantiate.workList.Count - 2]);
+            PaintInstantiate.workList.RemoveAt(PaintInstantiate.workList.Count - 2);
+        }
+        
     }
+
+
 
     void turnOffOthers()
     {
         isPaintMode = false;
         Palette.SetActive(false);
-        StickerSV.SetActive(false);
-        PhraseSV.SetActive(false);
+        Destroy(tmp2);
+        Destroy(tmp);
     }
 
 
