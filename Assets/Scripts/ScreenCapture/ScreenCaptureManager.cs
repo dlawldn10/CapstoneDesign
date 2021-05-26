@@ -83,6 +83,8 @@ public class ScreenCaptureManager : MonoBehaviour
         objActivity.Call("sendBroadcast", objIntent);
 
 
+        //효과음 재생
+        this.gameObject.GetComponent<AudioSource>().Play();
         //토스트 메세지 띄우기
         toast._ShowAndroidToastMessage("캡쳐되었습니다");
         toast._ShowAndroidToastMessage(finalLOC + "에 저장되었습니다");

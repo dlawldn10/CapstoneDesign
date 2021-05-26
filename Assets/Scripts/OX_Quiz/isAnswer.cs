@@ -16,6 +16,9 @@ public class isAnswer : MonoBehaviour
     public GameObject Obttn;
     public GameObject Xbttn;
 
+    public AudioClip CorrectSound;
+    public AudioClip WrongSound;
+
     List<string> Answers = new List<string>();
     // Start is called before the first frame update
     void Start()
@@ -59,6 +62,7 @@ public class isAnswer : MonoBehaviour
 
     public void Correct()
     {
+        this.gameObject.GetComponent<AudioSource>().PlayOneShot(CorrectSound);
         Ocanvas.SetActive(true);
         QuestionNumber += 1;
         Invoke("InActivateCanvas_O", 2);
@@ -77,6 +81,7 @@ public class isAnswer : MonoBehaviour
 
     public void Wrong()
     {
+        this.gameObject.GetComponent<AudioSource>().PlayOneShot(WrongSound);
         Xcanvas.SetActive(true);
         Invoke("InActivateCanvas_X", 2);
     }

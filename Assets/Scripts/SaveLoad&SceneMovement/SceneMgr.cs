@@ -11,6 +11,7 @@ public class SceneMgr : MonoBehaviour
    
     SaveLoad saveLoad;
     public GameObject menu;
+    
 
     public static int ClearEpiNum = 0;   //열린 에피소드 상황.
     public static int ClearPageNum = 0;  //사용자의 최대 진도 페이지 
@@ -62,22 +63,22 @@ public class SceneMgr : MonoBehaviour
     private void Start()
     {
         saveLoad = GameObject.Find("SceneMgr").GetComponent<SaveLoad>();
-        menu = GameObject.Find("Menu1").gameObject;
 
     }
 
     public void Menuclick()
     {
-        if (menu.activeSelf)
+        if (GameObject.Find("Menu1(Clone)") != null)   //이 오브젝트가 존재하면
         {
-            menu.SetActive(false);
+            Destroy(GameObject.Find("Menu1(Clone)"));   //삭제
         }
-        else
+        else    //존재하지 않으면
         {
+            Vector2 menuPos = new Vector2(2721.6f, 1216f);
+            GameObject tmp = Instantiate(menu);     //생성
+            tmp.transform.position = menuPos;
 
-            menu.SetActive(true);
         }
-
     }
 
     public void renewProgress()
@@ -96,36 +97,6 @@ public class SceneMgr : MonoBehaviour
     }
 
     
-    //클리어한 최대 페이지(학습진도)를 기록함.
-    void SaveClearPage()
-    {
-       //if(Epi0_ClearPageNum < PageNum && EpiNum == 0)
-       // {
-       //     Epi0_ClearPageNum = PageNum;
-       // }
-       //else if(Epi1_ClearPageNum < PageNum && EpiNum == 1)
-       // {
-       //     Epi1_ClearPageNum = PageNum;
-       // }
-       //else if(Epi2_ClearPageNum < PageNum && EpiNum == 2)
-       // {
-       //     Epi2_ClearPageNum = PageNum;
-       // }
-       //else if(Epi3_ClearPageNum < PageNum && EpiNum == 3)
-       // {
-       //     Epi3_ClearPageNum = PageNum;
-       // }
-       //else if(Epi4_ClearPageNum < PageNum && EpiNum == 4)
-       // {
-       //     Epi4_ClearPageNum = PageNum;
-       // }
-        //Debug.Log("Epi0 : " + Epi0_ClearPageNum);
-        //Debug.Log("Epi1 : " + Epi1_ClearPageNum);
-        //Debug.Log("Epi2 : " + Epi2_ClearPageNum);
-
-
-
-    }
 
     public int  FindNextPage()  //다음 페이지 찾기, 반환
     {
