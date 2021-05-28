@@ -26,10 +26,10 @@ public class PhraseLongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             clickTime += Time.deltaTime;
             if(clickTime > 1)
             {
-                //창닫기
-                if (phraseSV.activeInHierarchy)
+                
+                if (phraseSV != null)   
                 {
-                    //선택
+                    //창닫기
                     this.gameObject.transform.SetParent(GameObject.Find("Canvas").transform);
                     Destroy(phraseSV);
                 }

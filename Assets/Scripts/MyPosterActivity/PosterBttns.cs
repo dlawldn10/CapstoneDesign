@@ -37,6 +37,8 @@ public class PosterBttns : MonoBehaviour
     }
     public void PhraseBttn()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffOthers();
         tmp = Instantiate(PhraseSV, SVposition.transform.position, Quaternion.identity);
         tmp.transform.SetParent(GameObject.Find("Canvas").transform);
@@ -46,6 +48,8 @@ public class PosterBttns : MonoBehaviour
 
     public void StickerBttn()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffOthers();
         tmp2 = Instantiate(StickerSV, SVposition.transform.position, Quaternion.identity);
         tmp2.transform.SetParent(GameObject.Find("Canvas").transform);
@@ -54,7 +58,8 @@ public class PosterBttns : MonoBehaviour
 
     public void PaintBttn()
     {
-        
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         if (Palette.activeSelf)
         {
             Palette.SetActive(false);
@@ -72,12 +77,15 @@ public class PosterBttns : MonoBehaviour
 
     public void BackBttn()
     {
+
         if(PaintInstantiate.workList.Count - 2 < 0)
         {
 
         }
         else
         {
+            GameObject soundPlayer = GameObject.Find("SoundPlayer");
+            soundPlayer.SendMessage("plainBttnClick");
             Destroy(PaintInstantiate.workList[PaintInstantiate.workList.Count - 2]);
             PaintInstantiate.workList.RemoveAt(PaintInstantiate.workList.Count - 2);
         }
@@ -113,21 +121,29 @@ public class PosterBttns : MonoBehaviour
 
     public void setColorSize_1()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         nowColorSize = 1;
     }
 
     public void setColorSize_2()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         nowColorSize = 2;
     }
 
     public void setColorSize_3()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         nowColorSize = 3;
     }
 
     public void clcikRed()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         RedGroup.SetActive(true);
         nowColor = "RED";
@@ -135,6 +151,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikOrange()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         OrangedGroup.SetActive(true);
         nowColor = "ORANGE";
@@ -142,6 +160,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikYellow()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         YellowGroup.SetActive(true);
         nowColor = "YELLOW";
@@ -149,6 +169,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikGreen()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         GreenGroup.SetActive(true);
         nowColor = "GREEN";
@@ -156,6 +178,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikYellowgreen()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         YellogreenGroup.SetActive(true);
         nowColor = "YELLOWGREEN";
@@ -163,6 +187,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikBlue()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         BlueGroup.SetActive(true);
         nowColor = "BLUE";
@@ -170,6 +196,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikSkyblue()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         SkyblueGroup.SetActive(true);
         nowColor = "SKYBLUE";
@@ -177,6 +205,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikPurple()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         PurpleGroup.SetActive(true);
         nowColor = "PURPLE";
@@ -184,6 +214,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikBrown()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         BrownGroup.SetActive(true);
         nowColor = "BROWN";
@@ -191,6 +223,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikBlack()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         BlackGroup.SetActive(true);
         nowColor = "BLACK";
@@ -198,6 +232,8 @@ public class PosterBttns : MonoBehaviour
 
     public void clcikWhite()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         turnOffAllColors();
         WhiteGroup.SetActive(true);
         nowColor = "WHITE";

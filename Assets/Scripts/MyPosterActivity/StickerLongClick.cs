@@ -27,7 +27,7 @@ public class StickerLongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             if (clickTime > 1)
             {
                 //창닫기
-                if (stickerSV.activeInHierarchy)
+                if (stickerSV != null)
                 {
                     //선택
                     this.gameObject.transform.SetParent(GameObject.Find("Canvas").transform);

@@ -132,9 +132,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7869482093317240304, guid: 2f1fe89f6fe3f1c4882d2bf9cb0ca9ff,
+      - m_Target: {fileID: 6038290179203950399, guid: 8410a0211c9b2094894b89cb0dc11370,
           type: 3}
-        m_MethodName: BttnSound
+        m_MethodName: plainBttnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

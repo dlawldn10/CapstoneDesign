@@ -18,10 +18,25 @@ public class toCapture : MonoBehaviour
 
     public void nextBttn_4_34()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         Tools.SetActive(false);
         nextScene.SetActive(true);
         nextBttn1.SetActive(false);
         nextBttn2.SetActive(true);
+        GameObject tmp = GameObject.Find("Palette");
+        if (tmp.activeSelf)
+        {
+            tmp.SetActive(false);
+        }
+        if (GameObject.Find("PhraseScrollView(Clone)") != null)
+        {
+            Destroy(GameObject.Find("PhraseScrollView(Clone)"));
+        }
+        if (GameObject.Find("StickerScrollView(Clone)") != null)
+        {
+            Destroy(GameObject.Find("StickerScrollView(Clone)"));
+        }
     }
 
 }

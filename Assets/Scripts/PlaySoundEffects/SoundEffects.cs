@@ -16,16 +16,16 @@ public class SoundEffects : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void planeBttnClick()
+    public void plainBttnClick()
     {
         audioSource.PlayOneShot(planeBttnSound);
-        StartCoroutine("DestroyDelay");
+        //StartCoroutine("DestroyDelay");
     }
 
     public void startBttnClick()
     {
         audioSource.PlayOneShot(startBttnSound);
-        StartCoroutine("DestroyDelay");
+        //StartCoroutine("DestroyDelay");
     }
 
 

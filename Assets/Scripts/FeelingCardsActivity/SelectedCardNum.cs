@@ -41,6 +41,8 @@ public class SelectedCardNum : MonoBehaviour
 
     public void Scene1_3_NextBttn()
     {
+        GameObject soundPlayer = GameObject.Find("SoundPlayer");
+        soundPlayer.SendMessage("plainBttnClick");
         SelectCard.SceneChanged = true;
         speechBubble.SetActive(false);
         speechBubble2.SetActive(true);

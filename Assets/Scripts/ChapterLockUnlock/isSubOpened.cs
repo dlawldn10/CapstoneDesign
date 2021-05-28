@@ -37,16 +37,19 @@ public class isSubOpened : MonoBehaviour
     void Epi1_OpenSub()
     {
         
-        if (SceneMgr.ClearPageNum < SceneMgr.Epi1_Sub2)   //처음단원만
+        if (SceneMgr.ClearPageNum < SceneMgr.Epi1_Sub2)   //처음단원만 
         {
             //모두 닫기
             Sub2_closed.SetActive(true);
             Sub2_opend.SetActive(false);
             Sub3_closed.SetActive(true);
             Sub3_opend.SetActive(false);
+            Debug.Log("옳지않은 실행");
+            Debug.Log(SceneMgr.ClearPageNum);
         }
-        else if (SceneMgr.Epi1_Sub2 <= SceneMgr.ClearPageNum && SceneMgr.ClearPageNum < SceneMgr.Epi1_Sub3) //1,2,3,4
+        else if (SceneMgr.Epi1_Sub2 <= SceneMgr.ClearPageNum && SceneMgr.ClearPageNum < SceneMgr.Epi1_Sub3) 
         {
+            Debug.Log("옳은 실행");
             //1, 2 열기
             Sub2_closed.SetActive(false);
             Sub2_opend.SetActive(true);
