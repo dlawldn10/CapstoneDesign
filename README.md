@@ -6,7 +6,7 @@
 ##### 2. 이에 초등학생 고학년을 대상으로 실생활에 필요한 디지털 성범죄 예방 교육을 제공하는 어플리케이션을 제작
 ##### 3. 실감미디어 기반 학습을 통한 실제 상황에서의 대처 능력을 향상시키고 디지털 성범죄 예방에 기여하고자 함
 
-<img width="983" alt="목업" src="https://user-images.githubusercontent.com/69448918/123190041-d024da80-d4d9-11eb-9957-f14d281d6c4e.png">
+<iframe width="1104" height="621" src="https://www.youtube.com/embed/7lsH6LrgQqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ---
