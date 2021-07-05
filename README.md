@@ -6,8 +6,9 @@
 ##### 2. 이에 초등학생 고학년을 대상으로 실생활에 필요한 디지털 성범죄 예방 교육을 제공하는 어플리케이션을 제작
 ##### 3. 실감미디어 기반 학습을 통한 실제 상황에서의 대처 능력을 향상시키고 디지털 성범죄 예방에 기여하고자 함
 
-<iframe width="1104" height="621" src="https://www.youtube.com/embed/7lsH6LrgQqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/embed/7lsH6LrgQqg
 
+<img width="983" alt="목업" src="https://user-images.githubusercontent.com/69448918/124507563-fa936380-de08-11eb-825e-9b6588721600.png">
 
 ---
 #### • 초등학생 눈높이에 맞춘 사례 설명
@@ -21,8 +22,9 @@
         chatNum++;
     }
 ```
+<img src= "https://user-images.githubusercontent.com/69448918/115139335-4afdef00-a06c-11eb-827d-c8f6aab594f3.gif" width="600px">
 
-### <img src= "https://user-images.githubusercontent.com/69448918/115139335-4afdef00-a06c-11eb-827d-c8f6aab594f3.gif" width="600px">
+
 ---
 #### • Unity Android 플러그인사용한 직접 신고해보기 활동
 안드로이드 플러그인을 사용하여 기본적인 STT(Speach To Text) 구현.
